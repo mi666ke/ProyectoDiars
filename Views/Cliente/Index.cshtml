@@ -1,0 +1,26 @@
+@{ Layout = "_Layout"; }
+<br>
+<br><br>
+
+<body>
+    <h1 class="text-center text-info">Listar Clientes</h1>
+</body>
+
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>Nombre Completo</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach(var item in Model){
+            <tr>
+                <td>@item.nombres @item.apellidos</td>
+                <td>@item.usuario</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

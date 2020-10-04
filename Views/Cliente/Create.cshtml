@@ -1,0 +1,91 @@
+@model DentoWeb.Models.Cliente
+<br>
+<br><br>
+
+    <header style="margin-left:-330px; margin-top:-90px;" class="site-navbar light js-sticky-header site-navbar-target wow fadeInUp" role="banner">
+
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-6 col-xl-2">
+                    <div style="margin-left:40px; margin-top:30px; ">
+                        <img src="~/images/icon.png" alt="[Ícono DentoWeb]" width="26" height="26" />
+                    </div>
+                    <div style="margin-left:70px; margin-top:-33.5px;" class="mb-0 site-logo "><a href="/Home/Index" class="mb-0" style="color: rgb(60,145,240); font-size:30px">Dento<a data-scroll href="#home" class="mb-0" style="color: rgb(128, 128, 128);font-size:30px">Web</a><span class="text-primary">.</span> </a></div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+<body>
+    <img style="position:absolute; width:200px; height:auto; margin-left:-260px; margin-top:90px;" src="https://dentistadeurgencias.com/wp-content/uploads/2020/04/CIRUGIA.png" alt="Regi"/>
+    <img style="position:absolute; width:140px; height:auto; margin-left:1200px; margin-top:120px;" src="https://www.colon.gob.sv/wp-content/uploads/2015/12/registro.png" />
+    
+    <h2 style="color: rgb(60,145,240);" class="text-center text-primary"><strong>Registrar Nuevo Paciente</strong></h2>
+    <div class="row">
+        <div class="container">
+            <form method="POST" action="/Cliente/Create">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="is-valid" for="inputNombre">Nombres: </label>
+                        <input type="text" class="form-control" name="nombres" />
+                        <span asp-validation-for="nombres" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputApellido">Apellidos:</label>
+                        <input type="text" class="form-control" name="apellidos" />
+                        <span asp-validation-for="apellidos" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputDNI">DNI</label>
+                        <input type="text" class="form-control" name="dni" />
+                        <span asp-validation-for="dni" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" name="fechaNac" />
+                        <span asp-validation-for="fechaNac" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTelefono">Correo</label>
+                        <input type="email" class="form-control" name="correo" />
+                        <span asp-validation-for="correo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTelefono">Telefono</label>
+                        <input type="tel" class="form-control" name="telefono" />
+                        <span asp-validation-for="telefono" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputTelefono">Usuario</label>
+                        <input type="text" class="form-control" name="usuario" />
+                        <span asp-validation-for="usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputTelefono">Contraseña</label>
+                        <input type="password" class="form-control" name="passwd" />
+                        <span asp-validation-for="passwd" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="far fa-save"></i> Aceptar
+                    </button>
+                    <button class="btn btn-danger">
+                        <i href="/Home/Index" class="far fa-window-close"></i> Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
