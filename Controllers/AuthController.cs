@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using DentoWeb.Models.Db;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DentoWeb_master.Controllers
@@ -20,19 +21,21 @@ namespace DentoWeb_master.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string usuario, string passwd){
+        public IActionResult Login(string usuario, string passwd){
 
             var x = cnx.Clientes.Where(o => o.usuario == usuario && o.passwd == passwd).FirstOrDefault();
 
             if(x != null){
-                 var claims = new List<Claim>{
+                var claims = new List<Claim>{
                     new Claim(ClaimTypes.Name, usuario)
                 };
-                var claimsIdentity = new ClaimsIdentity(claims,"Login");
+                var claimsIdentity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 
-                HttpContext.SignInAsync(claimsPrincipal);
+                var x2 = HttpContext.SignInAsync(claimsPrincipal);
+                x2.Wait();
                 
+
                 return RedirectToAction("Index","Home");
             }
             else{

@@ -2,19 +2,22 @@ using System;
 using System.Linq;
 using DentoWeb.Models;
 using DentoWeb.Models.Db;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DentoWeb.Controllers
 {
+    
+
+    [Authorize]
     public class CitaController:Controller
     {
-        private DentoWebContext cnx;
+        private readonly DentoWebContext cnx;
         public CitaController(DentoWebContext cnx)
         {
             this.cnx = cnx;
         }
-
 
         [HttpGet]
         public ActionResult Create(){
@@ -26,16 +29,18 @@ namespace DentoWeb.Controllers
 
         [HttpPost]
         public ActionResult Create(DateTime fecha,string horaInicio,
-        string horaFin, int idCliente, int idDoctor){
+        string horaFin, int idDoctor){
 
             Cita cita = new Cita();
-
+            var claim = HttpContext.User.Claims.FirstOrDefault();    
+            var nombre = cnx.Clientes.Where( o => o.usuario == claim.Value.ToString()).FirstOrDefault();
+            cita.idCliente = nombre.idCliente;   
             cita.fecha = fecha;
             cita.horaInicio = horaInicio;
             cita.horaFin = horaFin;
 
             cita.estado = "Activo";
-            cita.idCliente = idCliente;
+            
             cita.idDoctor = idDoctor;
 
             cita.monto = (decimal)35.5;

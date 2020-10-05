@@ -8,7 +8,7 @@
 
             <div class="col-6 col-xl-2">
                 <div style="margin-left:35px; margin-top:30px; ">
-                    <img src="~/images/icon.png" alt="[Ícono DentoWeb]" width="32" height="32" />
+                    <img src="~/images/icon.png" alt="[ï¿½cono DentoWeb]" width="32" height="32" />
                 </div>
                 <div style="margin-left:70px; margin-top:-45.2px;" class="mb-0 site-logo "><a href="/Home/Index" class="mb-0" style="color: rgb(60,145,240); font-size:40px">Dento<a data-scroll href="#home" class="mb-0" style="color: rgb(128, 128, 128);font-size:40px">Web</a><span class="text-primary" style="font-size:30px;">.</span> </a></div>
             </div>
@@ -66,18 +66,6 @@
                   <div class="form-group">
                     <label>Hora fin</label>
                     <input class="form-control" type="time" name="horaFin" />
-                  </div>
-
-                  <div class="form-group">
-                    <label>Cliente</label>
-                    <select class="form-control" name="idCliente">
-                      <option>--Seleccionar cliente--</option>
-                      @foreach (var item in ViewBag.Clientes) {
-                      <option value="@item.idCliente">
-                        @item.nombres @item.apellidos
-                      </option>
-                      }
-                    </select>
                   </div>
 
                   <div

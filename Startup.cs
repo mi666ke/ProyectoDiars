@@ -32,9 +32,10 @@ namespace DentoWeb
             );
 
             services.AddAuthentication(CookieAuthenticationDefaults
-        .AuthenticationScheme).AddCookie(
-        options => {options.LoginPath = "/Auth/Login";}
+            .AuthenticationScheme).AddCookie(
+            options => {options.LoginPath = "/Auth/Login";}
         );
+        /*
         services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Name = ".AspNetCore.Cookies";
@@ -42,13 +43,13 @@ namespace DentoWeb
                 options.SlidingExpiration = true;
             }
         );
+        
         services.AddSession(options => {
             options.IdleTimeout = TimeSpan.FromMinutes(120);
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
         });
-
-
+        */
 
 
         }
